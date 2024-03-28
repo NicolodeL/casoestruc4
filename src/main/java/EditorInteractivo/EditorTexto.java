@@ -20,6 +20,13 @@ public class EditorTexto implements InterfazEditorTexto{
         documents = new ArrayList<>();
         documentList = new JList<>();
 
+        File folder = new File(".");
+        for (File file : folder.listFiles()) {
+            if (file.isFile() && file.getName().endsWith(".txt")) {
+                documents.add(file);
+            }
+        }
+
         JButton saveButton = new JButton("Guardar");
         saveButton.addActionListener(new ActionListener() {
             @Override
