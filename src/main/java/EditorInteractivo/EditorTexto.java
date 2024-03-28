@@ -10,7 +10,7 @@ public class EditorTexto implements InterfazEditorTexto{
     private JTextArea textArea;
     private JFrame frame;
 
-    public TextEditor() {
+    public EditorTexto() {
         frame = new JFrame("Editor de Texto");
 
         JButton saveButton = new JButton("Guardar");

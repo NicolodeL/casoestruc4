@@ -1,7 +1,9 @@
 package org.example;
+import EditorInteractivo.EditorTexto;
+import EditorInteractivo.InterfazEditorTexto;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        EditorTexto editorTexto = new EditorTexto();
     }
 }
