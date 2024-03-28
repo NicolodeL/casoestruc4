@@ -1,14 +1,18 @@
 package EditorInteractivo;
 
+import EditorInteractivo.InterfazEditorTexto;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class EditorTexto implements InterfazEditorTexto{
+public class EditorTexto implements InterfazEditorTexto {
     private JTextArea textArea;
     private JFrame frame;
     private JList<String> documentList;
@@ -16,16 +20,25 @@ public class EditorTexto implements InterfazEditorTexto{
 
     public EditorTexto() {
         frame = new JFrame("Editor de Texto");
-
         documents = new ArrayList<>();
         documentList = new JList<>();
 
+        // Cargar documentos existentes
         File folder = new File(".");
         for (File file : folder.listFiles()) {
             if (file.isFile() && file.getName().endsWith(".txt")) {
                 documents.add(file);
             }
         }
+
+        // Actualizar JList
+        updateDocumentList();
+
+        documentList.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                loadDocument(documents.get(documentList.getSelectedIndex()));
+            }
+        });
 
         JButton saveButton = new JButton("Guardar");
         saveButton.addActionListener(new ActionListener() {
@@ -41,9 +54,26 @@ public class EditorTexto implements InterfazEditorTexto{
 
         frame.getContentPane().add(scrollPane);
         frame.getContentPane().add(saveButton, "South");
+        frame.getContentPane().add(new JScrollPane(documentList), "East");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    private void updateDocumentList() {
+        String[] fileNames = new String[documents.size()];
+        for (int i = 0; i < documents.size(); i++) {
+            fileNames[i] = documents.get(i).getName();
+        }
+        documentList.setListData(fileNames);
+    }
+
+    private void loadDocument(File file) {
+        try {
+            textArea.setText(new String(Files.readAllBytes(Paths.get(file.getPath()))));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(frame, "Error al cargar el archivo");
+        }
     }
 
     @Override

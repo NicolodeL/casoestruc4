@@ -1,6 +1,4 @@
-package org.example;
-import EditorInteractivo.EditorTexto;
-import EditorInteractivo.InterfazEditorTexto;
+package EditorInteractivo;
 
 public class Main {
     public static void main(String[] args) {
