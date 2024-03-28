@@ -1,7 +1,8 @@
 package EditorInteractivo;
 
 import EditorInteractivo.InterfazEditorTexto;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -76,12 +77,18 @@ public class EditorTexto implements InterfazEditorTexto {
         }
     }
 
-    @Override
     public void saveTextToFile() {
-        try (FileWriter writer = new FileWriter("output.txt")) {
-            writer.write(textArea.getText());
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(frame, "Error al guardar el archivo");
+        if (documentList.getSelectedIndex() != -1) {
+            File selectedFile = documents.get(documentList.getSelectedIndex());
+            try (FileWriter writer = new FileWriter(selectedFile)) {
+                writer.write(textArea.getText());
+                System.out.println("Archivo guardado: " + selectedFile.getName());
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(frame, "Error al guardar el archivo");
+            }
+        } else {
+            JOptionPane.showMessageDialog(frame, "No se seleccionó ningún archivo para guardar");
         }
     }
-}
+
+    }
