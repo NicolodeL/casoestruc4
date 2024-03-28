@@ -3,15 +3,22 @@ package EditorInteractivo;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EditorTexto implements InterfazEditorTexto{
     private JTextArea textArea;
     private JFrame frame;
+    private JList<String> documentList;
+    private ArrayList<File> documents;
 
     public EditorTexto() {
         frame = new JFrame("Editor de Texto");
+
+        documents = new ArrayList<>();
+        documentList = new JList<>();
 
         JButton saveButton = new JButton("Guardar");
         saveButton.addActionListener(new ActionListener() {
