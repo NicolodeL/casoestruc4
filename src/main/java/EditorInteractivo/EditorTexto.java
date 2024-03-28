@@ -77,17 +77,25 @@ public class EditorTexto implements InterfazEditorTexto {
         }
     }
 
+    @Override
     public void saveTextToFile() {
+        File fileToWrite;
         if (documentList.getSelectedIndex() != -1) {
-            File selectedFile = documents.get(documentList.getSelectedIndex());
-            try (FileWriter writer = new FileWriter(selectedFile)) {
-                writer.write(textArea.getText());
-                System.out.println("Archivo guardado: " + selectedFile.getName());
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(frame, "Error al guardar el archivo");
-            }
+            fileToWrite = documents.get(documentList.getSelectedIndex());
         } else {
-            JOptionPane.showMessageDialog(frame, "No se seleccionó ningún archivo para guardar");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+            LocalDateTime now = LocalDateTime.now();
+            String uniqueFileName = "output" + dtf.format(now) + ".txt";
+            fileToWrite = new File(uniqueFileName);
+            documents.add(fileToWrite);
+            updateDocumentList();
+        }
+
+        try (FileWriter writer = new FileWriter(fileToWrite)) {
+            writer.write(textArea.getText());
+            System.out.println("Archivo guardado: " + fileToWrite.getName());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(frame, "Error al guardar el archivo");
         }
     }
 
