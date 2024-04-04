@@ -2,6 +2,8 @@ package ComparadoryContador;
 
 import EditorInteractivo.EditorTexto;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,6 +23,7 @@ public class Comparador {
         compareButton.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setMultiSelectionEnabled(true);
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Archivos de texto", "txt"));
             int returnValue = fileChooser.showOpenDialog(null);
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 File[] files = fileChooser.getSelectedFiles();
@@ -31,7 +34,9 @@ public class Comparador {
                 }
             }
         });
-        editorTexto.getFrame().add(compareButton);
+        editorTexto.getFrame().add(compareButton, BorderLayout.NORTH);
+        editorTexto.getFrame().revalidate();
+        editorTexto.getFrame().repaint();
     }
 
     public void compareFiles(File file1, File file2) {
