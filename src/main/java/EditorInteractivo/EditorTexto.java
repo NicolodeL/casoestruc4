@@ -19,6 +19,9 @@ public class EditorTexto implements InterfazEditorTexto {
     private JList<String> documentList;
     private ArrayList<File> documents;
 
+    public JFrame getFrame() {
+        return frame;
+    }
     public EditorTexto() {
         frame = new JFrame("Editor de Texto");
         documents = new ArrayList<>();
