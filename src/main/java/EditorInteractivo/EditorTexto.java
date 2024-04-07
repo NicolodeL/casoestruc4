@@ -1,6 +1,5 @@
 package EditorInteractivo;
 
-import EditorInteractivo.InterfazEditorTexto;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
@@ -102,4 +101,9 @@ public class EditorTexto implements InterfazEditorTexto {
         }
     }
 
+    @Override
+    public void compareFiles() {
+
     }
+
+}
