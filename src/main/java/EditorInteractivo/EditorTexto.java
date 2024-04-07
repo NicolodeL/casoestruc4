@@ -1,5 +1,6 @@
 package EditorInteractivo;
 
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
@@ -106,4 +107,11 @@ public class EditorTexto implements InterfazEditorTexto {
 
     }
 
+    public Component getCompareButton() {
+        return null;
+    }
+
+    public AbstractButton getTextArea() {
+        return null;
+    }
 }
