@@ -18,17 +18,22 @@ public class Contador {
     private void createCountButton() {
         JButton countButton = new JButton("Contar");
         countButton.addActionListener(e -> {
-            String text = editorTexto.getTextArea().getText();
-            String[] words = text.split("\\s+");
-            int wordCount = words.length;
+            JTextArea textArea = editorTexto.getTextArea();
+            if (textArea != null) {
+                String text = textArea.getText();
+                String[] words = text.split("\\s+");
+                int wordCount = words.length;
 
-            Map<String, Integer> wordUsage = new HashMap<>();
-            for (String word : words) {
-                wordUsage.put(word, wordUsage.getOrDefault(word, 0) + 1);
+                Map<String, Integer> wordUsage = new HashMap<>();
+                for (String word : words) {
+                    wordUsage.put(word, wordUsage.getOrDefault(word, 0) + 1);
+                }
+
+                System.out.println("Número de palabras: " + wordCount);
+                System.out.println("Estadísticas de uso de palabras: " + wordUsage);
+            } else {
+                System.out.println("No se pudo obtener el área de texto");
             }
-
-            System.out.println("Número de palabras: " + wordCount);
-            System.out.println("Estadísticas de uso de palabras: " + wordUsage);
         });
 
         System.out.println("Botón 'Contar' creado");
@@ -43,4 +48,3 @@ public class Contador {
         System.out.println("Botón 'Contar' agregado al JFrame");
     }
 }
-

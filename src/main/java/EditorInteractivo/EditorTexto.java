@@ -111,7 +111,7 @@ public class EditorTexto implements InterfazEditorTexto {
         return null;
     }
 
-    public AbstractButton getTextArea() {
-        return null;
+    public JTextArea getTextArea() {
+        return textArea;
     }
 }
