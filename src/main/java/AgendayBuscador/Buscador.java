@@ -37,10 +37,11 @@ public class Buscador {
 
         System.out.println("Botón 'Buscar' creado");
 
-        JPanel buttonPanel = new JPanel(new BorderLayout());
-        buttonPanel.add(searchButton, BorderLayout.WEST);
+        JPanel buttonPanel = new JPanel(null); // Establecer el layout a null
+        searchButton.setBounds(50, 50, 100, 30); // Establecer las coordenadas y el tamaño del botón
+        buttonPanel.add(searchButton);
 
-        editorTexto.getFrame().getContentPane().add(buttonPanel, BorderLayout.NORTH);
+        editorTexto.getFrame().getContentPane().add(buttonPanel);
         editorTexto.getFrame().revalidate();
         editorTexto.getFrame().repaint();
 
