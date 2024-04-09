@@ -19,6 +19,8 @@ public class EditorTexto implements InterfazEditorTexto {
     private JList<String> documentList;
     private ArrayList<File> documents;
 
+    private JLabel mousePositionLabel;
+
     public JFrame getFrame() {
         return frame;
     }
@@ -62,6 +64,9 @@ public class EditorTexto implements InterfazEditorTexto {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+        mousePositionLabel = new JLabel();
+        frame.getContentPane().add(mousePositionLabel, "South");
     }
 
     private void updateDocumentList() {
@@ -115,4 +120,9 @@ public class EditorTexto implements InterfazEditorTexto {
         return textArea;
     }
 
+    public void updateTextArea(String s) {
+    }
+    public JLabel getMousePositionLabel() {
+        return mousePositionLabel;
+    }
 }

@@ -5,6 +5,7 @@ import ComparadoryContador.Comparador;
 import ComparadoryContador.Contador;
 import AgendayBuscador.Buscador;
 import EditorInteractivo.EditorTexto;
+import InterfazAvanzada.Raton;
 import InterfazAvanzada.Ventana;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class Main {
         Contador contador = new Contador(editorTexto);
         Buscador buscador = new Buscador(editorTexto);
         Agenda agenda = new Agenda(editorTexto);
+        Raton raton = new Raton(editorTexto);
 
         JButton compareButton = comparador.createCompareButton();
         JButton countButton = contador.createCountButton();
