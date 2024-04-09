@@ -1,5 +1,6 @@
 package org.example;
 
+import AgendayBuscador.Agenda;
 import ComparadoryContador.Comparador;
 import ComparadoryContador.Contador;
 import AgendayBuscador.Buscador;
@@ -16,15 +17,18 @@ public class Main {
         Comparador comparador = new Comparador(editorTexto);
         Contador contador = new Contador(editorTexto);
         Buscador buscador = new Buscador(editorTexto);
+        Agenda agenda = new Agenda(editorTexto);
 
         JButton compareButton = comparador.createCompareButton();
         JButton countButton = contador.createCountButton();
         JButton searchButton = buscador.createSearchButton();
+        JButton agendaButton = agenda.createAgendaButton();
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
         buttonPanel.add(compareButton);
         buttonPanel.add(countButton);
         buttonPanel.add(searchButton);
+        buttonPanel.add(agendaButton);
 
         editorTexto.getFrame().getContentPane().add(buttonPanel, BorderLayout.NORTH);
         editorTexto.getFrame().revalidate();
