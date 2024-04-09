@@ -1,9 +1,13 @@
 package EditorInteractivo;
 
 import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -18,6 +22,8 @@ public class EditorTexto implements InterfazEditorTexto {
     private JFrame frame;
     private JList<String> documentList;
     private ArrayList<File> documents;
+
+    private JScrollBar documentScrollBar;
 
     private JLabel mousePositionLabel;
 
@@ -66,7 +72,27 @@ public class EditorTexto implements InterfazEditorTexto {
         frame.setVisible(true);
 
         mousePositionLabel = new JLabel();
-        frame.getContentPane().add(mousePositionLabel, "South");
+        frame.getContentPane().add(mousePositionLabel, "West");
+
+        documentScrollBar = new JScrollBar(JScrollBar.VERTICAL);
+        frame.getContentPane().add(documentScrollBar, BorderLayout.WEST);
+
+        textArea.addCaretListener(new CaretListener() {
+            @Override
+            public void caretUpdate(CaretEvent e) {
+                int max = textArea.getDocument().getLength();
+                int position = textArea.getCaretPosition();
+                documentScrollBar.setMaximum(max);
+                documentScrollBar.setValue(position);
+            }
+        });
+
+        documentScrollBar.addAdjustmentListener(new AdjustmentListener() {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                textArea.setCaretPosition(documentScrollBar.getValue());
+            }
+        });
     }
 
     private void updateDocumentList() {
