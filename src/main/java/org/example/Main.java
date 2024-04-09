@@ -5,6 +5,7 @@ import ComparadoryContador.Comparador;
 import ComparadoryContador.Contador;
 import AgendayBuscador.Buscador;
 import EditorInteractivo.EditorTexto;
+import InterfazAvanzada.Ventana;
 
 import javax.swing.*;
 import java.awt.*;
