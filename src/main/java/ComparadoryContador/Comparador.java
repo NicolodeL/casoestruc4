@@ -43,6 +43,11 @@ public class Comparador {
     }
 
     public void compareFiles(File file1, File file2) {
+        if (!file1.exists() || !file2.exists()) {
+            JOptionPane.showMessageDialog(null, "Uno o ambos archivos no existen");
+            return;
+        }
+
         try (BufferedReader reader1 = new BufferedReader(new FileReader(file1));
              BufferedReader reader2 = new BufferedReader(new FileReader(file2))) {
 
