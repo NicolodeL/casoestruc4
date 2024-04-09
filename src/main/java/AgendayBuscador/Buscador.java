@@ -13,7 +13,7 @@ public class Buscador {
         createSearchButton();
     }
 
-    private void createSearchButton() {
+    public JButton createSearchButton() {
         JButton searchButton = new JButton("Buscar");
         searchButton.addActionListener(e -> {
             String wordToFind = JOptionPane.showInputDialog("Introduce la palabra que quieres buscar");
@@ -35,16 +35,9 @@ public class Buscador {
             }
         });
 
-        System.out.println("Botón 'Buscar' creado");
+        return searchButton;
 
-        JPanel buttonPanel = new JPanel(null); // Establecer el layout a null
-        searchButton.setBounds(50, 50, 100, 30); // Establecer las coordenadas y el tamaño del botón
-        buttonPanel.add(searchButton);
 
-        editorTexto.getFrame().getContentPane().add(buttonPanel);
-        editorTexto.getFrame().revalidate();
-        editorTexto.getFrame().repaint();
-
-        System.out.println("Botón 'Buscar' agregado al JFrame");
     }
+
 }

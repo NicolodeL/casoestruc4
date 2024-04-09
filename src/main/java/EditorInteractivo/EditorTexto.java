@@ -114,4 +114,5 @@ public class EditorTexto implements InterfazEditorTexto {
     public JTextArea getTextArea() {
         return textArea;
     }
+
 }

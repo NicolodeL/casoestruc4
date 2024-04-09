@@ -15,7 +15,7 @@ public class Contador {
         createCountButton();
     }
 
-    private void createCountButton() {
+    public JButton createCountButton() {
         JButton countButton = new JButton("Contar");
         countButton.addActionListener(e -> {
             JTextArea textArea = editorTexto.getTextArea();
@@ -36,15 +36,8 @@ public class Contador {
             }
         });
 
-        System.out.println("Botón 'Contar' creado");
 
-        JPanel buttonPanel = new JPanel(new BorderLayout());
-        buttonPanel.add(countButton, BorderLayout.EAST);
+        return countButton;
 
-        editorTexto.getFrame().getContentPane().add(buttonPanel, BorderLayout.NORTH);
-        editorTexto.getFrame().revalidate();
-        editorTexto.getFrame().repaint();
-
-        System.out.println("Botón 'Contar' agregado al JFrame");
     }
 }

@@ -17,7 +17,7 @@ public class Comparador {
         createCompareButton();
     }
 
-    private void createCompareButton() {
+    public JButton createCompareButton() {
         JButton compareButton = new JButton("Comparar archivos");
         compareButton.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
@@ -37,14 +37,9 @@ public class Comparador {
                 }
             }
         });
+        return compareButton;
 
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 2));
-        buttonPanel.add(compareButton);
-        buttonPanel.add(new JLabel()); // Componente vacío para ocupar la mitad derecha
-        editorTexto.getFrame().getContentPane().add(buttonPanel, BorderLayout.NORTH);
-        editorTexto.getFrame().revalidate();
-        editorTexto.getFrame().repaint();
+
     }
 
     public void compareFiles(File file1, File file2) {
