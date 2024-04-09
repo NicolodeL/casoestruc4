@@ -5,6 +5,7 @@ import ComparadoryContador.Comparador;
 import ComparadoryContador.Contador;
 import AgendayBuscador.Buscador;
 import EditorInteractivo.EditorTexto;
+import EmailyDiseñografico.Dibujo;
 import InterfazAvanzada.Raton;
 import InterfazAvanzada.Ventana;
 import  EmailyDiseñografico.Email;
@@ -23,12 +24,14 @@ public class Main {
         Agenda agenda = new Agenda(editorTexto);
         Raton raton = new Raton(editorTexto);
         Email email = new Email();
+        Dibujo dibujo = new Dibujo();
 
         JButton compareButton = comparador.createCompareButton();
         JButton countButton = contador.createCountButton();
         JButton searchButton = buscador.createSearchButton();
         JButton agendaButton = agenda.createAgendaButton();
         JButton emailButton = email.createEmailButton();
+        JButton dibujoButton = dibujo.createDibujoButton();
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
         buttonPanel.add(compareButton);
@@ -36,6 +39,7 @@ public class Main {
         buttonPanel.add(searchButton);
         buttonPanel.add(agendaButton);
         buttonPanel.add(emailButton);
+        buttonPanel.add(dibujoButton);
 
         editorTexto.getFrame().getContentPane().add(buttonPanel, BorderLayout.NORTH);
         editorTexto.getFrame().revalidate();
