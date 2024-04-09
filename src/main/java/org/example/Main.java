@@ -45,9 +45,8 @@ public class Main {
         editorTexto.getFrame().revalidate();
         editorTexto.getFrame().repaint();
 
-        File file1 = new File("ruta/al/archivo1.txt");
-        File file2 = new File("ruta/al/archivo2.txt");
 
-        comparador.compareFiles(file1, file2);
+
+
     }
 }

@@ -56,7 +56,7 @@ public class Comparador {
 
             while (line1 != null || line2 != null) {
                 if (line1 == null || line2 == null || !line1.equals(line2)) {
-                    System.out.println("Los archivos son diferentes.");
+                    // No imprime nada si los archivos son diferentes
                     return;
                 }
                 line1 = reader1.readLine();
